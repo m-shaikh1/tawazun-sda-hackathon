@@ -2,9 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deploy
+  namespace: mshaikh-tawazun
   labels:
     app: deploy
-    service: svc-app
+    service: tawazun-svc
     name: Mohammed Shaikh
 spec:
   template:
@@ -12,15 +13,17 @@ spec:
       name: deploy
       labels:
         app: deploy
-        service: svc-app
+        service: tawazun-svc
     spec:
       containers:
        - name: nginx
          image: mshaikh911/tawazun:latest
+         ports:
+            - containerPort: 8080
          args:
           - /bin/sh
           - -c
-          - touch /tmp/healthy; sleep 30; rm -f /tmp/healthy; sleep 600
+          - touch /tmp/healthy; #sleep 30; rm -f /tmp/healthy; sleep 600
          livenessProbe:
             exec:
               command:
@@ -38,9 +41,18 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 3
             timeoutSeconds: 1
-            failureThreshold: 7
+            failureThreshold: 5
+         startupProbe:
+            exec:
+              command:
+              - cat
+              - /tmp/healthy
+            initialDelaySeconds: 5
+            periodSeconds: 3
+            timeoutSeconds: 1
+            failureThreshold: 5
   replicas: 1
   selector:
     matchLabels:
       app: deploy
-      service: svc-app
+      service: tawazun-svc
