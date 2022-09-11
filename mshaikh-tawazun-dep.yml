@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy
+  labels:
+    app: deploy
+    service: svc-app
+    name: Mohammed Shaikh
+spec:
+  template:
+    metadata:
+      name: deploy
+      labels:
+        app: deploy
+        service: svc-app
+    spec:
+      containers:
+       - name: nginx
+         image: mshaikh911/tawazun:latest
+         args:
+          - /bin/sh
+          - -c
+          - touch /tmp/healthy; sleep 30; rm -f /tmp/healthy; sleep 600
+         livenessProbe:
+            exec:
+              command:
+              - cat
+              - /tmp/healthy
+            initialDelaySeconds: 5
+            periodSeconds: 3
+            timeoutSeconds: 1
+            failureThreshold: 5
+         readinessProbe:
+            exec:
+              command:
+              - cat
+              - /tmp/healthy
+            initialDelaySeconds: 5
+            periodSeconds: 3
+            timeoutSeconds: 1
+            failureThreshold: 7
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deploy
+      service: svc-app
