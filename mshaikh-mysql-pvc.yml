@@ -5,6 +5,7 @@ metadata:
   namespace: mshaikh-tawazun
   labels:
     app: sql
+    name: MohammedShaikh
 spec:
   #storageClassName: local-path
   accessModes:
