@@ -16,14 +16,14 @@ spec:
         service: tawazun-svc
     spec:
       containers:
-       - name: nginx
-         image: mshaikh911/tawazun:latest
+       - name: tawazun
+         image: mshaikh911/tawazun
          ports:
             - containerPort: 8080
          args:
           - /bin/sh
           - -c
-          - touch /tmp/healthy; #sleep 30; rm -f /tmp/healthy; sleep 600
+          - touch /tmp/healthy; sleep 30; rm -f /tmp/healthy; sleep 600
          livenessProbe:
             exec:
               command:

@@ -4,14 +4,13 @@ metadata:
   name: sql-pv
   namespace: mshaikh-tawazun
   labels:
+    type: local
     app: deploy
-    name: MohammedShaikh
-    type: amazonEBS
 spec:
+  storageClassName: local-path
   capacity:
-    storage: 10Gi
+    storage: 5Gi
   accessModes:
     - ReadWriteOnce
-  awsElasticBlockStore:
-    volumeID: vol-06976d3f451e42135
-    fsType: ext4
+  hostPath:
+    path: "/mnt/data"

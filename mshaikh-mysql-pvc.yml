@@ -1,18 +1,14 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  labels:
-    app: deploy
-    name: MohammedShaikh
-    type: amazonEBS
   name: sql-pv-claim
   namespace: mshaikh-tawazun
+  labels:
+    app: deploy
 spec:
+  storageClassName: local-path
   accessModes:
   - ReadWriteOnce
   resources:
     requests:
       storage: 4Gi
-  selector:
-    matchLabels:
-      type: "amazonEBS"
