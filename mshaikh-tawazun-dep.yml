@@ -6,7 +6,7 @@ metadata:
   labels:
     app: deploy
     service: tawazun-svc
-    name: Mohammed Shaikh
+    name: MohammedShaikh
 spec:
   template:
     metadata:

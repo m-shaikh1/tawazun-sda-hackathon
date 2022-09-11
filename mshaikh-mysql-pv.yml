@@ -4,7 +4,8 @@ metadata:
   name: sql-pv
   namespace: mshaikh-tawazun
   labels:
-    name: Mohammed Shaikh
+    app: deploy
+    name: MohammedShaikh
     type: amazonEBS
 spec:
   capacity:

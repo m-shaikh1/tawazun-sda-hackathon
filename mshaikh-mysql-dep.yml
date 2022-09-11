@@ -5,7 +5,7 @@ metadata:
   namespace: mshaikh-tawazun
   labels:
     app: deploy
-    name: Mohammed Shaikh
+    name: MohammedShaikh
 spec:
   replicas: 1
   selector:

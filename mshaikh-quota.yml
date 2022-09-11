@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: ResourceQuota
 metadata:
- name: mshaikh-resource-quota
- namespace: mshaikh-tawazun
- labels: 
-    name: Mohammed Shaikh
+  name: mshaikh-resource-quota
+  namespace: mshaikh-tawazun
+  labels: 
+    name: MohammedShaikh
 spec:
  hard:
    requests.cpu: "2"

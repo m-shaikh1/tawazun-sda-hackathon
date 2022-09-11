@@ -3,10 +3,10 @@ kind: PersistentVolumeClaim
 metadata:
   labels:
     app: deploy
-    name: Mohammed Shaikh
-    namespace: mshaikh-tawazun
+    name: MohammedShaikh
     type: amazonEBS
   name: sql-pv-claim
+  namespace: mshaikh-tawazun
 spec:
   accessModes:
   - ReadWriteOnce

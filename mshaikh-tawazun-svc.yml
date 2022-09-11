@@ -4,7 +4,7 @@ metadata:
   name: tawazun-svc
   namespace: mshaikh-tawazun
   labels: 
-    name: Mohammed Shaikh
+    name: MohammedShaikh
 spec:
   selector:
     app: deploy
