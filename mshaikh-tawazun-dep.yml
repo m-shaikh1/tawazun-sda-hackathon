@@ -20,7 +20,14 @@ spec:
         service: tawazun-svc
     spec:
       containers:
-       - name: tawazun
-         image: mshaikh911/tawazun
-         ports:
+        - image: mshaikh911/tawazun
+          name: tawazun
+          resources: 
+            requests: 
+              memory: 250Mi
+              cpu: "250m"
+            limits:
+              memory: 512Mi
+              cpu: "500m"
+          ports:
             - containerPort: 8080
