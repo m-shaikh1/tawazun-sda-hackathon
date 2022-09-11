@@ -29,5 +29,23 @@ spec:
             limits:
               memory: 512Mi
               cpu: "500m"
+          readinessProbe:
+            httpGet:
+              path: /home
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /home
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          startupProbe:
+            httpGet:
+              path: /home
+              port: 8080
+            failureThreshold: 30
+            periodSeconds: 10
           ports:
             - containerPort: 8080
