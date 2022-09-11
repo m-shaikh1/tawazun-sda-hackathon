@@ -4,9 +4,9 @@ metadata:
   name: sql-pv-claim
   namespace: mshaikh-tawazun
   labels:
-    app: deploy
+    app: sql
 spec:
-  storageClassName: local-path
+  #storageClassName: local-path
   accessModes:
   - ReadWriteOnce
   resources:

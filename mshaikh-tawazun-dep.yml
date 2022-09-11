@@ -1,18 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploy
+  name: tawazun-deploy
   namespace: mshaikh-tawazun
   labels:
-    app: deploy
+    app: tawazun
     service: tawazun-svc
     name: MohammedShaikh
 spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tawazun
+      service: tawazun-svc
   template:
     metadata:
-      name: deploy
       labels:
-        app: deploy
+        app: tawazun
         service: tawazun-svc
     spec:
       containers:
@@ -20,39 +24,3 @@ spec:
          image: mshaikh911/tawazun
          ports:
             - containerPort: 8080
-         args:
-          - /bin/sh
-          - -c
-          - touch /tmp/healthy; sleep 30; rm -f /tmp/healthy; sleep 600
-         livenessProbe:
-            exec:
-              command:
-              - cat
-              - /tmp/healthy
-            initialDelaySeconds: 5
-            periodSeconds: 3
-            timeoutSeconds: 1
-            failureThreshold: 5
-         readinessProbe:
-            exec:
-              command:
-              - cat
-              - /tmp/healthy
-            initialDelaySeconds: 5
-            periodSeconds: 3
-            timeoutSeconds: 1
-            failureThreshold: 5
-         startupProbe:
-            exec:
-              command:
-              - cat
-              - /tmp/healthy
-            initialDelaySeconds: 5
-            periodSeconds: 3
-            timeoutSeconds: 1
-            failureThreshold: 5
-  replicas: 1
-  selector:
-    matchLabels:
-      app: deploy
-      service: tawazun-svc

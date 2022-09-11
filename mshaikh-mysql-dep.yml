@@ -4,17 +4,17 @@ metadata:
   name: sql
   namespace: mshaikh-tawazun
   labels:
-    app: deploy
+    app: sql
     name: MohammedShaikh
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: deploy
+      app: sql
   template:
     metadata:
       labels:
-        app: deploy
+        app: sql
     spec:
       volumes:
         - name: sql-pv-claim
@@ -23,44 +23,13 @@ spec:
       containers:
         - image: mysql
           name: mysql
-          args:
-          - /bin/sh
-          - -c
-          - touch /tmp/healthy; sleep 30; rm -f /tmp/healthy; sleep 600
-          livenessProbe:
-            exec:
-              command:
-              - cat
-              - /tmp/healthy
-            initialDelaySeconds: 5
-            periodSeconds: 3
-            timeoutSeconds: 1
-            failureThreshold: 5
-          readinessProbe:
-            exec:
-              command:
-              - cat
-              - /tmp/healthy
-            initialDelaySeconds: 5
-            periodSeconds: 3
-            timeoutSeconds: 1
-            failureThreshold: 5
-          startupProbe:
-            exec:
-              command:
-              - cat
-              - /tmp/healthy
-            initialDelaySeconds: 5
-            periodSeconds: 3
-            timeoutSeconds: 1
-            failureThreshold: 5
           env:
-          - name: MYSQL_USER
-            value: "mysql"
-          - name:  MYSQL_PASSWORD
-            value: "mysql"
-          - name: MYSQL_ROOT_PASSWORD
-            value: "mysql"
+            - name: MYSQL_USER
+              value: "mysql"
+            - name: MYSQL_PASSWORD
+              value: "mysql"
+            - name: MYSQL_ROOT_PASSWORD
+              value: "mysql"
           ports:
             - containerPort: 3306
           volumeMounts:

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: tawazun
+  name: testdeploy
+  namespace: mshaikh-tawazun
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tawazun
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: tawazun
+    spec:
+      containers:
+      - image: mshaikh911/tawazun
+        name: tawazun

@@ -5,9 +5,9 @@ metadata:
   namespace: mshaikh-tawazun
   labels:
     type: local
-    app: deploy
+    app: sql
 spec:
-  storageClassName: local-path
+  #storageClassName: local-path
   capacity:
     storage: 5Gi
   accessModes:

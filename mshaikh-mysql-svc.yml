@@ -4,7 +4,7 @@ metadata:
   name: cluster-ip-service
   namespace: mshaikh-tawazun
   labels:
-    app: deploy
+    app: sql
     name: MohammedShaikh
 spec:
   type: ClusterIP
@@ -14,4 +14,4 @@ spec:
       targetPort: 3306
       protocol: TCP
   selector:
-    app: deploy
+    app: sql

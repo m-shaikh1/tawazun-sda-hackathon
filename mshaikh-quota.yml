@@ -6,8 +6,8 @@ metadata:
   labels: 
     name: MohammedShaikh
 spec:
- hard:
-   requests.cpu: "2"
-   requests.memory: 2Gi
-   limits.cpu: "4"
-   limits.memory: 4Gi
+  hard:
+    requests.cpu: 1
+    requests.memory: 1G
+    limits.cpu: 1
+    limits.memory: 1G
